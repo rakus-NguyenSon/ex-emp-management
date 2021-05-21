@@ -41,6 +41,16 @@ public class AdministratorController {
 	@ModelAttribute public LoginForm setUpLoginForm() {
 		return new LoginForm();
 	}
+
+	/**
+	 * ログインページに移動する
+	 * @return
+	 */
+	@RequestMapping("/")
+	public String toLogin(Model model) {
+		return "administrator/login";
+	}
+
 	@RequestMapping("/toInsert")
 	public String toInsert(Model model) {
 		return "administrator/insert";
@@ -64,9 +74,19 @@ public class AdministratorController {
 		return "administrator/insert";	
 	}
 	
-	@RequestMapping("/")
-	public String toLogin() {
-		return "administrator/login";
+	@RequestMapping("/login")
+	public String login(LoginForm form, Model model) {
+		
+		
+		Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
+		if (administrator==null) {			
+			model.addAttribute("Error","メールアドレスまたはパスワードが不正です");
+			System.out.println("Can not login");
+			return toLogin(model);
+			
+			//return "redirect:/"; 
+		} 
+		return "employee/list"; //return "forward:/employee/showList";
+			
 	}
-	
 }
