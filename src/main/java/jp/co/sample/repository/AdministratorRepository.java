@@ -25,7 +25,7 @@ import jp.co.sample.domain.Administrator;
 public class AdministratorRepository {
 
 	/** テーブル名 */
-	private final static String ADMIN_TABLE = "administratos";
+	private final static String ADMIN_TABLE = "administrators";
 
 	/** SpringFrameworkにある機能を利用するための変数 */
 	@Autowired
@@ -50,7 +50,7 @@ public class AdministratorRepository {
 	 */
 	public Administrator insert(Administrator administrator) {
 
-		String sql = "INSERT INTO " + ADMIN_TABLE + " (name, main_address, password) values"
+		String sql = "INSERT INTO " + ADMIN_TABLE + " (name, mail_address, password) values"
 				+ "(:name,:mailAddress,:password);";
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 
