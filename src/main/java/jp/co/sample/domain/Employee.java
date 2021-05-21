@@ -4,36 +4,35 @@ import java.sql.Date;
 
 /**
  * 従業員のクラスです.<br>
- * 従業員の情報を持つために作成しました。
  * 
  * @author nhson
  *
  */
 public class Employee {
 
-	/** 従業員のID */
+	/** ID */
 	private Integer id;
-	/** 従業員の名前 */
+	/** 名前 */
 	private String name;
-	/** 従業員の画像 */
+	/** 画像 */
 	private String image;
-	/** 従業員の性別 */
+	/** 性別 */
 	private String gender;
-	/** 従業員の入社日 */
+	/** 入社日 */
 	private Date hireDate;
-	/** 従業員のメールアドレス */
+	/** メールアドレス */
 	private String mailAddress;
-	/** 従業員の郵便番号 */
+	/** 郵便番号 */
 	private String zipCode;
-	/** 従業員の住所 */
+	/** 住所 */
 	private String address;
-	/** 従業員の電話番号 */
+	/** 電話番号 */
 	private String telephone;
-	/** 従業員の給料 */
+	/** 給料 */
 	private Integer salary;
-	/** 従業員の特性 */
+	/** 特性 */
 	private String characteristics;
-	/** 従業員の扶養人数 */
+	/** 扶養人数 */
 	private Integer dependentsCount;
 
 	public Integer getId() {

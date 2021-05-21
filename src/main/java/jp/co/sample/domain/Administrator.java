@@ -1,21 +1,20 @@
 package jp.co.sample.domain;
 
 /**
- * Administratorのクラスです. <br>
- * Adminの情報を持つためのクラスです。
+ * 管理者のクラスです. <br>
  * 
  * @author nhson
  * 
  */
 public class Administrator {
 
-	/** AdministratorのID */
+	/** ID */
 	private Integer ID;
-	/** Administratorの名前 */
+	/** 名前 */
 	private String name;
-	/** Administratorのメールアドレス */
+	/** メールアドレス */
 	private String mailAddress;
-	/** Administratorのパスワード */
+	/** パスワード */
 	private String password;
 
 	public Integer getID() {

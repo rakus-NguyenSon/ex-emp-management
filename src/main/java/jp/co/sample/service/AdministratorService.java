@@ -8,7 +8,7 @@ import jp.co.sample.domain.Administrator;
 import jp.co.sample.repository.AdministratorRepository;
 
 /**
- * Administrator Service　クラス
+ * 管理者のServiceクラス.
  * @author nhson
  *
  */
@@ -20,7 +20,7 @@ public class AdministratorService {
 	private AdministratorRepository administratorRepository;
 	
 	/**
-	 * adminstratorをデータベースに追加するメソッドです.
+	 * 新しい管理者の情報をデータベースに追加する.
 	 * @param administrator
 	 */
 	public void insert(Administrator administrator) {
@@ -28,10 +28,10 @@ public class AdministratorService {
 	}
 	
 	/**
-	 * @param mailAddress
-	 * @param password
-	 * @return mail address　と　password　あってる場合はadministratorの情報を返却する
-	 * それではない場合はNullを返却するメソッドです
+	 * @param mailAddress　管理者のメールアドレス
+	 * @param password　管理者のパスワード
+	 * @return mail address　と　password　あってる場合は管理者の情報を返却する
+	 * それではない場合はNullを返却する
 	 */
 	public Administrator login(String mailAddress, String password) {
 		return administratorRepository.findByMailAddressAndPassword(mailAddress, password);

@@ -1,5 +1,7 @@
 package jp.co.sample.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +17,16 @@ import jp.co.sample.form.LoginForm;
 import jp.co.sample.service.AdministratorService;
 
 /**
- * AdminstratorController クラスです. <br>
- * Adminstratorに関する処理を実装するクラスです。
+ * 管理者のController クラスです. <br>
  * @author nhson
  *
  */
 @Controller
 @RequestMapping("/")
 public class AdministratorController {
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private AdministratorService administratorService;
@@ -44,7 +48,7 @@ public class AdministratorController {
 
 	/**
 	 * ログインページに移動する
-	 * @return
+	 * @return　ログインページ
 	 */
 	@RequestMapping("/")
 	public String toLogin(Model model) {
@@ -57,11 +61,11 @@ public class AdministratorController {
 	}
 	
 	/**
-	 * Administratorを追加するメソッドです．
+	 * 管理者を追加するメソッドです．
 	 * @param form InsertAdministratorフォーム
 	 * @param result 入力値チェック用
-	 * @param model　
-	 * @return
+	 * @param model　ページデータスコープ
+	 * @return　ログイン画面
 	 */
 	@RequestMapping("/insert")
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result, Model model) {
@@ -71,9 +75,16 @@ public class AdministratorController {
 		Administrator administrator = new Administrator();
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
-		return "administrator/insert";	
+		return "redirect:/";	
 	}
 	
+	/**
+	 *　ログインの処理
+	 * @param form 
+	 * @param model
+	 * @return データベースに管理者がない場合はログイン画面に戻ります。
+	 * そうではない場合は従業員一覧画面に移動します。
+	 */
 	@RequestMapping("/login")
 	public String login(LoginForm form, Model model) {
 		

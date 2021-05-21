@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.sample.domain.Administrator;
 
 /**
- * AdminstratorRepositoryです. <br>
+ * 管理者のRepositoryです. <br>
  * SQLにあるadministratorsテーブルを操作や情報を呼び出すためのクラスです。
  * 
  * @author nhson

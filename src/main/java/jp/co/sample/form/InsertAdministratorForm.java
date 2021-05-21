@@ -4,8 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
- * InsertAdministratorのフォームクラスです.<br>
- * InsertAdminnistratorフォームから入力した値を受け取るクラスです
+ * 管理者を追加するフォームクラスです.<br>
  * 
  * @author nhson
  *
