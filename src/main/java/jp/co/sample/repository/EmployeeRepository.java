@@ -13,8 +13,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.sample.domain.Employee;
 
 /**
- * EmployeeRepositoryです. <br>
- * SQLにあるemployeesテーブルを操作や情報を呼び出すためのクラスです。
+ * Employeesテーブルを操作するクラスです. <br>
  * 
  * @author nhson
  *
@@ -54,7 +53,7 @@ public class EmployeeRepository {
 	public List<Employee> findAll(){
 		String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address,"
 				+ "telephone, salary, characteristics, dependents_count"
-				+ " from " + EMPLOYEES_TABLE + ";";
+				+ " from " + EMPLOYEES_TABLE + " order by hire_date;";
 				
 		List<Employee> employees = template.query(sql, EMPLOYEE_ROW_MAPPER);
 		return employees;
@@ -71,14 +70,8 @@ public class EmployeeRepository {
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", ID);
 		
-		try {
-			Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER); // ←ここに実行処理を書く
-			return employee;
-		} catch (Exception e) {
-			System.out.println("Can not load");
-			e.printStackTrace();
-		}
-		return null;		
+			Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
+			return employee;	
 	}
 	
 	/**
@@ -88,7 +81,7 @@ public class EmployeeRepository {
 	public void update(Employee employee) {
 		String sql = "UPDATE " + EMPLOYEES_TABLE + " SET name=:name, image=:image, gender=:gender,"
 				+ "hire_date=:hireDate, mail_address=:mailAddress, zip_code=:zipCode, address =:address,"
-				+ "telephone =:telephone, salary=:salary, characterostics=:characteristics, "
+				+ "telephone =:telephone, salary=:salary, characteristics=:characteristics, "
 				+ "dependents_count=:dependentsCount where id=:id;";
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
 		

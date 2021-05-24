@@ -47,7 +47,7 @@ public class AdministratorController {
 	}
 
 	/**
-	 * ログインページに移動する
+	 * ログインページに移動する．
 	 * @return　ログインページ
 	 */
 	@RequestMapping("/")
@@ -79,7 +79,7 @@ public class AdministratorController {
 	}
 	
 	/**
-	 *　ログインの処理
+	 *　ログインの処理．
 	 * @param form 
 	 * @param model
 	 * @return データベースに管理者がない場合はログイン画面に戻ります。
@@ -97,8 +97,15 @@ public class AdministratorController {
 			
 			//return "redirect:/"; 
 		} 
-		session.setAttribute("adminname", administrator.getName());
-		return "employee/list"; //return "forward:/employee/showList";
+		session.setAttribute("administratorName", administrator.getName());
+//		return "employee/list"; //
+		return "forward:/employee/showList";
 			
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
 	}
 }
